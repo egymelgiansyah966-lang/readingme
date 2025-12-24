@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Maveryxz — Desktop Sad Notes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Segoe UI", Arial, sans-serif;
+}
+
+body{
+  width:100vw;
+  height:100vh;
+  background:linear-gradient(120deg,#0a0a0a,#141414);
+  color:#eaeaea;
+  overflow:hidden;
+}
+
+/* WINDOW */
+.window{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:85%;
+  max-width:900px;
+  height:70%;
+  background:#111;
+  border-radius:10px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.8);
+  display:flex;
+  flex-direction:column;
+  border:1px solid #222;
+  animation:fadeIn 1.2s ease;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translate(-50%,-45%);}
+  to{opacity:1; transform:translate(-50%,-50%);}
+}
+
+/* TITLE BAR */
+.title-bar{
+  height:40px;
+  background:#181818;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 15px;
+  border-bottom:1px solid #222;
+}
+
+.dots{display:flex; gap:8px;}
+.dot{width:12px;height:12px;border-radius:50%;}
+.red{background:#ff5f56;}
+.yellow{background:#ffbd2e;}
+.green{background:#27c93f;}
+
+.title-text{
+  font-size:13px;
+  opacity:0.8;
+}
+
+/* CONTENT */
+.content{
+  flex:1;
+  padding:25px;
+  overflow-y:auto;
+  line-height:1.7;
+  font-size:15px;
+  white-space:pre-wrap;
+}
+
+/* SCROLLBAR */
+.content::-webkit-scrollbar{width:6px;}
+.content::-webkit-scrollbar-thumb{background:#333;border-radius:10px;}
+.content::-webkit-scrollbar-track{background:#111;}
+
+.hashtag{
+  margin-top:20px;
+  font-size:12px;
+  opacity:0.5;
+  text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<div class="window">
+  <div class="title-bar">
+    <div class="dots">
+      <div class="dot red"></div>
+      <div class="dot yellow"></div>
+      <div class="dot green"></div>
+    </div>
+    <div class="title-text">Notes — untitled feelings.txt</div>
+  </div>
+
+  <div class="content" id="text"></div>
+</div>
+
+<script>
+const text = `“Ada kalanya aku ingin berkata bahwa aku baik-baik saja, tapi the truth is… aku tidak benar-benar baik.
+Setiap kali aku mencoba menjauh, selalu ada sesuatu yang menarikku kembali padamu.
+Seolah-olah hatiku berkata ‘stay just a little longer,’ meski logikaku sudah berteriak untuk pergi.
+
+Aku tahu aku bukan seseorang yang kau lihat ketika kau membayangkan masa depanmu.
+Dan itu tidak apa-apa. Tapi rasanya sakit ketika aku berjuang habis-habisan,
+sementara hatimu bahkan tidak menoleh sedikit pun ke arahku.
+It feels like fighting a war I already know I’m going to lose.
+
+Namun anehnya… aku tetap bertahan.
+Not because I’m desperate, but because I genuinely love you.
+Karena setiap kali aku mencoba berhenti, namamu tetap muncul—
+di pikiranku, di langkahku, di setiap ‘tenang’ yang sebenarnya tidak pernah benar-benar tenang.
+
+Aku sering bertanya-tanya, apakah aku bodoh?
+Terus mencintai seseorang yang tidak pernah benar-benar memintaku untuk tinggal.
+Tapi lalu aku sadar… it’s not stupidity; it’s loyalty.
+Dan mungkin itu kelemahanku sekaligus kekuatanku.
+
+Aku iri pada mereka yang bisa move on begitu saja.
+Yang bisa berkata “aku selesai,” lalu benar-benar selesai.
+Sementara aku… aku stuck di tengah-tengah.
+Antara ingin menyerah dan tidak mampu melepaskan.
+Antara tahu kau bukan milikku, dan hati yang tetap memilihmu tanpa alasan yang masuk akal.
+
+Aku tidak menuntut apa pun darimu.
+I don’t need you to love me back.
+Aku hanya ingin kau tahu bahwa ada seseorang yang tetap berdiri di sisi yang gelap,
+menunggumu meski ia tahu cahaya tidak akan pernah datang dari arahmu.
+
+Dan jika suatu hari nanti aku memutuskan pergi, itu bukan karena cintaku padamu berkurang.
+No—never.
+Tapi karena aku akhirnya mengerti bahwa sometimes letting go is also a form of love.
+Bahwa merelakanmu bahagia, meski bukan denganku, adalah cara paling jujur yang bisa kulakukan untuk mencintaimu.
+
+Aku mungkin kalah. Bahkan mungkin sejak awal aku tidak pernah memiliki kesempatan untuk menang.
+But I never regret loving you. Not even for a second.”
+
+#Maveryxz #RyxzSa #WestSociety #pmgt #adminpmgt #2k23Mentality`;
+
+let i = 0;
+const speed = 20; // makin kecil = makin cepat
+const target = document.getElementById("text");
+
+function typeEffect(){
+  if(i < text.length){
+    target.innerHTML += text.charAt(i);
+    i++;
+    target.scrollTop = target.scrollHeight;
+    setTimeout(typeEffect, speed);
+  }
+}
+
+typeEffect();
+</script>
+
+</body>
+</html>
